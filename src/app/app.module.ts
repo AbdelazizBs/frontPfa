@@ -16,23 +16,29 @@ import { ScrollPanelModule } from "primeng/scrollpanel";
 import { ButtonModule } from "primeng/button";
 import { BadgeModule } from "primeng/badge";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { LoginRegistreComponent } from './login-registre/login-registre.component';
+// import { LoginRegistreComponent } from './login-registre/login-registre.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { HttpClientModule} from '@angular/common/http';
+import { LogoutComponent } from './logout/logout.component';
+import { LoginComponent } from './login/login.component';
+import { RegistreComponent } from './registre/registre.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
         HomeComponent,
-    HeaderComponent,
+    HeaderComponent,  
     FooterComponent,
     AboutUsComponent,
     ServiceComponent,
     ContactComponent,
     PriceComponent,
-    LoginRegistreComponent,
-    AcceuilComponent
+    // LoginRegistreComponent,
+    AcceuilComponent,
+    LogoutComponent,
+    LoginComponent,
+    RegistreComponent
   ],
 
   imports: [
@@ -49,7 +55,9 @@ import { HttpClientModule} from '@angular/common/http';
     
 
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

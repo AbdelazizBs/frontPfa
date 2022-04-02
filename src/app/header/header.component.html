@@ -13,9 +13,8 @@
                 <a routerLink="/service" class="nav-item nav-link">Service</a>
                 <a routerLink="/price" class="nav-item nav-link">Abonnements</a>
                 <a routerLink="/contact" class="nav-item nav-link">Contact</a>
-                
             </div>
-            <a routerLink="/login" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Login</a>
+            <a routerLink="/login" *ngIf="!loginService.isUserLoggedIn()"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">Login</a>
         </div>
     </nav>
 </div>
