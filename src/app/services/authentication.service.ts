@@ -4,9 +4,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { EmailValidator } from '@angular/forms';
 import { Observable } from 'rxjs';
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -49,12 +47,16 @@ export class AuthenticationService {
 //  )
 //  );
 // }
+
 authenticate(username: string, password: string): Observable<any> {
-   let param = new HttpParams();
-    // param.set('username',username);
-    // param.set('password',password);
-  let headers=new HttpHeaders({'Authorization':'Basic' + btoa(username + ':' + password) });
-  return this.httpClient.post( environment.urlAuth ,{headers:headers,param });
+  const httpOptions = {
+    headers: new HttpHeaders({'Authorization':'Basic' + btoa("pfa" + ':' + "123") }),
+  };
+  var formData: any = new FormData();
+  formData.append('username', username);
+  formData.append('password', password);
+  // let headers=new HttpHeaders({'Authorization':'Basic' + btoa("pfa" + ':' + "123") });
+  return this.httpClient.post( "http://127.0.0.1:8080/users/login" ,formData,httpOptions);
 }
 
   // authenticate(email: any, password : any) {
