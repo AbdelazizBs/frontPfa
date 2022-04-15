@@ -15,6 +15,7 @@ import {AccordionModule} from 'primeng/accordion';     //accordion and accordion
 import { ScrollPanelModule } from "primeng/scrollpanel";
 import { ButtonModule } from "primeng/button";
 import { BadgeModule } from "primeng/badge";
+import { IgxComboModule } from "igniteui-angular";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // import { LoginRegistreComponent } from './login-registre/login-registre.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
@@ -22,11 +23,16 @@ import { HttpClientModule} from '@angular/common/http';
 import { LogoutComponent } from './logout/logout.component';
 import { LoginComponent } from './login/login.component';
 import { RegistreComponent } from './registre/registre.component';
+import { HeaderUserComponent } from './header-user/header-user.component';
+import { ProfilComponent } from './profil/profil.component';
+import { AnnanceComponent } from './annance/annance.component';
+// import { IgxComboModule } from "igniteui-angular";
+// import { ComboMainComponent } from "./combo-main/combo-main.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+  AppComponent,
         HomeComponent,
     HeaderComponent,  
     FooterComponent,
@@ -38,7 +44,12 @@ import { RegistreComponent } from './registre/registre.component';
     AcceuilComponent,
     LogoutComponent,
     LoginComponent,
-    RegistreComponent
+    RegistreComponent,
+    HeaderUserComponent,
+    ProfilComponent,
+    AnnanceComponent,
+    
+    
   ],
 
   imports: [
@@ -51,7 +62,8 @@ import { RegistreComponent } from './registre/registre.component';
     BadgeModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    IgxComboModule
     
 
   ],

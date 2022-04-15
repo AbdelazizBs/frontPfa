@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { User } from '../login/login.component';
 import { environment } from 'src/environments/environment';
+import { AuthenticationService } from './authentication.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -10,12 +12,17 @@ import { environment } from 'src/environments/environment';
 })
 export class UserServiceService {
 
-  private API_URL_USER = environment.urlUsers;
- user: any;
- username = sessionStorage.getItem('username');
- password = sessionStorage.getItem('password');
 
-  constructor(private Http: HttpClient) { }
+  invalidLogin = false;
+  userLogin:User
+  private API_URL_USER = environment.urlUsers;
+  private API_URL_ANNANCE = environment.urlAnnances;
+  private API_URL_LOCATION = environment.urlLocation;
+
+ user = new User();
+  constructor(private Http: HttpClient,private loginservice: AuthenticationService,private router: Router) { 
+    this.userLogin = new User;
+  }
   private refreshData = new Subject<void>();
   get refreshNedeed() {
     return this.refreshData;
@@ -27,30 +34,36 @@ export class UserServiceService {
     })
   }
 
+  cityLocation =  this.getCityLocation(localStorage.getItem('id'));
 
-  // createUser(myform : any) {
-  //   this.user = {
-  //   'user': myform.value.userName,
-  //   'email': myform.value.userEmail,
-  //   'address': myform.value.userAdress,
-  //   'password': myform.value.userPassword,
-  //   'perferedCategory':myform.value.userPerferedCategory,
-  //   'phoneNumber':myform.value.userPhoneNumber,
-  //   }
-  //   return this.Http.post(this.urlUsers + '/registre', this.user);
-  //   }
-  // createUser(item:any): Observable<User> {
-  //   const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
-  //   // let headers=new HttpHeaders({'Authorization':'Bearer '+sessionStorage.TOKEN_KEY});
-  //   return <Observable<User>>this.Http
-  //     .post<User>(this.urlUsers + '/registre', JSON.stringify(item),this.httpOptions)
-  //     .pipe(
-  //       tap(() => {
-  //         this.refreshNedeed.next();
-  //       })
-  //     );
+  checkkLogin(username : any , password : any){
+    this.loginservice.authenticate(username,password).subscribe(
+      data => {
+        this.router.navigate(['acceuil']);
+      this.invalidLogin = false
+      console.log(data);
   
-  // }
+      // const  = this.getLocation(data.locationId);
+      // var locationObject ={id:locationUser.id, city:""};
+      
+      localStorage.setItem('username',data.username)
+      localStorage.setItem('address',data.address)
+      localStorage.setItem('preferedCategory',data.preferedCategory)
+      localStorage.setItem('email',data.email)
+      localStorage.setItem('location',data.locationId)
+      localStorage.setItem('phoneNumber',data.phoneNumber)
+      localStorage.setItem('id',data.id)
+    },
+    error => {
+    this.invalidLogin = true
+    }
+    )
+  }
+
+  // getUser(id : any) {
+  //   return this.Http.get(this.API_URL_USER + '/' + id)
+  //   }
+
 
   createUser(item:any) {
         return <Observable<User>>this.Http
@@ -61,6 +74,32 @@ export class UserServiceService {
               })
             );
     }
-   
 
-}
+    createAnnance(item:any) {
+      return <Observable<User>>this.Http
+          .post<User>(this.API_URL_ANNANCE+ '/add',JSON.stringify(item),this.httpOptions)
+          .pipe(
+            tap(() => {
+              this.refreshNedeed.next();
+            })
+          );
+  }
+
+
+
+  updateUser(item:any) {
+    return <Observable<User>>this.Http
+    .put<User>(this.API_URL_USER  +'/update/' + item['id'],JSON.stringify(item),this.httpOptions).pipe(
+      tap(() => {
+        this.refreshNedeed.next();
+      })
+    );
+    }
+
+    getLocation(id : any){
+      return this.Http.get(this.API_URL_LOCATION + '/get/'+id);
+    }
+   getCityLocation(id : any){
+      return this.Http.get(this.API_URL_LOCATION + '/getCityLocation/'+id);
+    }
+  }

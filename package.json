@@ -20,6 +20,8 @@
     "@angular/router": "~13.2.0",
     "@auth0/angular-jwt": "^5.0.2",
     "bootstrap": "^4.6.1",
+    "igniteui": "0.0.5",
+    "igniteui-angular": "^13.1.9",
     "primeicons": "^5.0.0",
     "primeng": "^13.3.0",
     "rxjs": "~7.5.0",

@@ -10,6 +10,7 @@ export class User {
   password!: string;
   phoneNumber!: string;
   preferedCategory!: string;
+  location!: string;
 }
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class User {
 export class LoginComponent implements OnInit {
 
   userLogin:User
- invalidLogin = false;
+invalidLogin = false;
  
  successMessage = "Authentication success";
  errorMessage = "Invalide username or password";
@@ -33,15 +34,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   checkLogin() {
-    (this.loginservice.authenticate(this.userLogin.username, this.userLogin.password).subscribe(
-      data => {
-      this.router.navigate(['acceuil'])
-      this.invalidLogin = false
-    },
-    error => {
-    this.invalidLogin = true
+    this.userService.checkkLogin(this.userLogin.username,this.userLogin.password)
     }
-    )
-    );
-  }
+  
+  
+    
+ 
+  
 }

@@ -73,12 +73,12 @@ authenticate(username: string, password: string): Observable<any> {
     // }
     // }
     isUserLoggedIn() {
-      let user = sessionStorage.getItem('email')
+      let user = localStorage.getItem('username')
       console.log(!(user === null))
       return !(user === null)
       }
       logOut() {
-      sessionStorage.removeItem('email')
+      localStorage.removeItem('username')
       }
      
   }

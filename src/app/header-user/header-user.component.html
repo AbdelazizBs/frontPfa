@@ -8,13 +8,13 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-                <a routerLink="/" class="nav-item nav-link active">Home</a>
-                <a routerLink="/about-us" class="nav-item nav-link">About</a>
-                <a routerLink="/service" class="nav-item nav-link">Service</a>
-                <a routerLink="/price" class="nav-item nav-link">Abonnements</a>
-                <a routerLink="/contact" class="nav-item nav-link">Contact</a>
+                <a routerLink="/acceuil" class="nav-item nav-link">Acceuil</a>
+                <a routerLink="/profil" class="nav-item nav-link">Profil</a>
+                <!-- <a routerLink="/" class="nav-item nav-link active">Home</a> -->
+                <a routerLink="/annances" class="nav-item nav-link">Annances</a>
             </div>
-            <a routerLink="/login" *ngIf="loginService.isUserLoggedIn()"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">Login</a>
+
+             <a routerLink="/logout" *ngIf="loginService.isUserLoggedIn()"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">Logout</a>
         </div>
     </nav>
 </div>

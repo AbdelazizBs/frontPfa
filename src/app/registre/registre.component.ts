@@ -22,16 +22,18 @@ export class RegistreComponent implements OnInit {
 
   userLogin:User
  invalidLogin = false;
- 
+
  successMessage = "Authentication success";
  errorMessage = "Invalide username or password";
 
   public user : any
   constructor(private userService :UserServiceService,private router: Router ,private loginservice: AuthenticationService) {
     this.userLogin = new User;
+
    }
 
   ngOnInit(): void {
+  
   }
 createUser() {
   this.user={
