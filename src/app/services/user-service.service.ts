@@ -34,31 +34,9 @@ export class UserServiceService {
     })
   }
 
-  cityLocation =  this.getCityLocation(localStorage.getItem('id'));
+  //cityLocation =  this.getCityLocation(localStorage.getItem('id'));
 
-  checkkLogin(username : any , password : any){
-    this.loginservice.authenticate(username,password).subscribe(
-      data => {
-        this.router.navigate(['acceuil']);
-      this.invalidLogin = false
-      console.log(data);
-  
-      // const  = this.getLocation(data.locationId);
-      // var locationObject ={id:locationUser.id, city:""};
-      
-      localStorage.setItem('username',data.username)
-      localStorage.setItem('address',data.address)
-      localStorage.setItem('preferedCategory',data.preferedCategory)
-      localStorage.setItem('email',data.email)
-      localStorage.setItem('location',data.locationId)
-      localStorage.setItem('phoneNumber',data.phoneNumber)
-      localStorage.setItem('id',data.id)
-    },
-    error => {
-    this.invalidLogin = true
-    }
-    )
-  }
+ 
 
   // getUser(id : any) {
   //   return this.Http.get(this.API_URL_USER + '/' + id)
@@ -99,7 +77,8 @@ export class UserServiceService {
     getLocation(id : any){
       return this.Http.get(this.API_URL_LOCATION + '/get/'+id);
     }
-   getCityLocation(id : any){
-      return this.Http.get(this.API_URL_LOCATION + '/getCityLocation/'+id);
+
+   getAllCityLocation():Observable<any[]>{
+      return this.Http.get<any>(this.API_URL_LOCATION + '/getAllCityLocation');
     }
   }

@@ -12,12 +12,14 @@ a{color:inherit;text-decoration:none}
 	width:100%;
 	margin:auto;
 	max-width:525px;
-	min-height:961px;
+	min-height:1100px;
 	position:relative;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
  opacity: 0.8;
 }
-
+.input-options{
+	background-color: #ED6436;
+}
 .btn {
 	background-color: #ED6436;
 	border: none;

@@ -35,7 +35,6 @@ username : any ;
   email: any;
   address: any;
   locationCity : any;
-  locationId: any;
   password: any;
   phoneNumber: any;
   preferedCategory: any;
@@ -53,15 +52,14 @@ username : any ;
 
 
   ngOnInit(): void {
-    this.cities = [{ name: 'London', id: 'UK01' }, { name: 'Sofia', id: 'BG01'}];
+    // this.cities = [{ name: 'London', id: 'UK01' }, { name: 'Sofia', id: 'BG01'}];
    // console.log(this.cityLocation);
     this.id=localStorage.getItem('id');
     this.username=localStorage.getItem('username');
     this.address=localStorage.getItem('address');
     this.preferedCategory=localStorage.getItem('preferedCategory');
     this.email=localStorage.getItem('email');
-    //this.location=this.cityLocation;
- 
+    this.locationCity=localStorage.getItem('locationCity');
     this.phoneNumber=localStorage.getItem('phoneNumber');
 
      
@@ -80,7 +78,7 @@ updateUser() {
   'address': this.address,
   'phoneNumber': this.phoneNumber,
   'preferedCategory': this.preferedCategory,
-  'location': this.locationCity
+  'locationCity': this.locationCity
   }
  
   this.service.updateUser(this.userToUpdate).subscribe(

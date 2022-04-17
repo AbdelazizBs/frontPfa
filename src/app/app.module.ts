@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ServiceComponent } from './service/service.component';
 import { ContactComponent } from './contact/contact.component';
@@ -26,6 +24,10 @@ import { RegistreComponent } from './registre/registre.component';
 import { HeaderUserComponent } from './header-user/header-user.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AnnanceComponent } from './annance/annance.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ToastrModule } from 'ngx-toastr';
+
 // import { IgxComboModule } from "igniteui-angular";
 // import { ComboMainComponent } from "./combo-main/combo-main.component";
 
@@ -34,8 +36,6 @@ import { AnnanceComponent } from './annance/annance.component';
   declarations: [
   AppComponent,
         HomeComponent,
-    HeaderComponent,  
-    FooterComponent,
     AboutUsComponent,
     ServiceComponent,
     ContactComponent,
@@ -48,8 +48,9 @@ import { AnnanceComponent } from './annance/annance.component';
     HeaderUserComponent,
     ProfilComponent,
     AnnanceComponent,
-    
-    
+    HeaderComponent,
+    FooterComponent,
+
   ],
 
   imports: [
@@ -63,7 +64,11 @@ import { AnnanceComponent } from './annance/annance.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    IgxComboModule
+    IgxComboModule,
+    ToastrModule.forRoot(),
+
+
+    
     
 
   ],

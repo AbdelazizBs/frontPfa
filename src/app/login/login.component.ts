@@ -10,7 +10,7 @@ export class User {
   password!: string;
   phoneNumber!: string;
   preferedCategory!: string;
-  location!: string;
+  locationCity!: string;
 }
 @Component({
   selector: 'app-login',
@@ -33,8 +33,33 @@ invalidLogin = false;
 
   ngOnInit(): void {
   }
-  checkLogin() {
-    this.userService.checkkLogin(this.userLogin.username,this.userLogin.password)
+  // checkLogin() {
+  //   this.userService.checkkLogin(this.userLogin.username,this.userLogin.password)
+  //   }
+
+    checkLogin(){
+      (this.loginservice.authenticate(this.userLogin.username,this.userLogin.password).subscribe(
+        data => {
+          this.router.navigate(['acceuil']);
+        this.invalidLogin = false
+        console.log(data);
+    
+        // const  = this.getLocation(data.locationId);
+        // var locationObject ={id:locationUser.id, city:""};
+        
+        localStorage.setItem('username',data.username)
+        localStorage.setItem('address',data.address)
+        localStorage.setItem('preferedCategory',data.preferedCategory)
+        localStorage.setItem('email',data.email)
+        localStorage.setItem('location',data.locationCity)
+        localStorage.setItem('phoneNumber',data.phoneNumber)
+        localStorage.setItem('id',data.id)
+      },
+      error => {
+      this.invalidLogin = true
+      }
+      )
+      );
     }
   
   

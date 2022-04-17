@@ -15,7 +15,31 @@
         <label for="pass" class="label">Password</label>
         <input [(ngModel)]="userLogin.password"  name="password" id="pass" type="password" class="input" data-type="password">
     </div>
+    <div class="group"> 
+        <label for="pass" class="label">Verified Password</label>
+        <input [(ngModel)]="userLogin.password"  name="password" id="pass" type="password" class="input" data-type="password">
+    </div>
+    <div class="group"> 
+        <label for="pass" class="label">Verified Password</label>
+        <select   name="location" id="pass" type="password" class="input" data-type="password">
+            <option>--Select--</option>
+            <option [value]="city.locationId" class="input-options" *ngFor="let city of cityLocation">
+                {{city}}
+            </option>
+        </select>  
 
+<!-- 
+        <mat-form-field>
+            <mat-select [formControl]="bankCtrl" placeholder="Bank" #singleSelect>
+              <mat-option>
+                <ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+              </mat-option>
+              <mat-option *ngFor="let city of cityLocation | async" [value]="bank">
+                {{city}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+    </div>
 
     <div class="group">
         <label for="pass" class="label">Email Address</label>

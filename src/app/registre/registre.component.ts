@@ -6,6 +6,7 @@ export class User {
   username!: string;
   email!: string;
   address!: string;
+  locationId!: string;
   password!: string;
   phoneNumber!: string;
   preferedCategory!: string;
@@ -20,6 +21,8 @@ import { AuthenticationService } from '../services/authentication.service';
 
 export class RegistreComponent implements OnInit {
 
+  cityLocation:any
+
   userLogin:User
  invalidLogin = false;
 
@@ -33,7 +36,9 @@ export class RegistreComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  
+  this.userService.getAllCityLocation().subscribe((data: any)=>{
+    this.cityLocation=data;
+  })
   }
 createUser() {
   this.user={
@@ -42,7 +47,8 @@ createUser() {
     "address":this.userLogin.address,
     "password":this.userLogin.password,
     "preferedCategory":this.userLogin.preferedCategory,
-    "phoneNumber":this.userLogin.phoneNumber
+    "phoneNumber":this.userLogin.phoneNumber,
+    "location":this.userLogin.locationId
   }
 this.userService.createUser(this.user).subscribe(response => {
   console.log(response);
