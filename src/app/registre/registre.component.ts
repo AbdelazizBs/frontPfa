@@ -6,7 +6,7 @@ export class User {
   username!: string;
   email!: string;
   address!: string;
-  locationId!: string;
+  city!: any;
   password!: string;
   phoneNumber!: string;
   preferedCategory!: string;
@@ -48,11 +48,11 @@ createUser() {
     "password":this.userLogin.password,
     "preferedCategory":this.userLogin.preferedCategory,
     "phoneNumber":this.userLogin.phoneNumber,
-    "location":this.userLogin.locationId
-  }
-this.userService.createUser(this.user).subscribe(response => {
-  console.log(response);
 
+  }
+this.userService.createUser(this.user,this.userLogin.city).subscribe(response => {
+  console.log(response);
+  console.log(this.userLogin.city);
 });
   this.router.navigate(['login'])
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { User } from '../login/login.component';
 import { environment } from 'src/environments/environment';
@@ -43,9 +43,17 @@ export class UserServiceService {
   //   }
 
 
-  createUser(item:any) {
+  createUser(item:any,locationCity:any) {
+    let params = new HttpParams();
+    params = params.append('locationCity', locationCity);
         return <Observable<User>>this.Http
-            .post<User>(this.API_URL_USER+ '/registre',JSON.stringify(item),this.httpOptions)
+            .post<User>(this.API_URL_USER+ '/registre',JSON.stringify(item),{
+              headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+              }),
+              params: params,
+              responseType: "json"
+            })
             .pipe(
               tap(() => {
                 this.refreshNedeed.next();

@@ -15,15 +15,15 @@
         <label for="pass" class="label">Password</label>
         <input [(ngModel)]="userLogin.password"  name="password" id="pass" type="password" class="input" data-type="password">
     </div>
-    <div class="group"> 
+    <!-- <div class="group"> 
         <label for="pass" class="label">Verified Password</label>
         <input [(ngModel)]="userLogin.password"  name="password" id="pass" type="password" class="input" data-type="password">
-    </div>
+    </div> -->
     <div class="group"> 
-        <label for="pass" class="label">Verified Password</label>
-        <select   name="location" id="pass" type="password" class="input" data-type="password">
+        <label for="pass" class="label">Location</label>
+        <select [(ngModel)]="userLogin.city"  name="city" id="pass" type="password" class="input" data-type="password">
             <option>--Select--</option>
-            <option [value]="city.locationId" class="input-options" *ngFor="let city of cityLocation">
+            <option [value]="city" class="input-options" *ngFor="let city of cityLocation">
                 {{city}}
             </option>
         </select>  

@@ -51,7 +51,7 @@ invalidLogin = false;
         localStorage.setItem('address',data.address)
         localStorage.setItem('preferedCategory',data.preferedCategory)
         localStorage.setItem('email',data.email)
-        localStorage.setItem('location',data.locationCity)
+        localStorage.setItem('locationCity',data.locationCity)
         localStorage.setItem('phoneNumber',data.phoneNumber)
         localStorage.setItem('id',data.id)
       },

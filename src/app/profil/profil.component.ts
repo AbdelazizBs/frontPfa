@@ -35,11 +35,12 @@ username : any ;
   email: any;
   address: any;
   locationCity : any;
+  city:any;
   password: any;
   phoneNumber: any;
   preferedCategory: any;
   userToUpdate : any ;
-
+  cityLocation:any
   public cities: { name: string, id: string }[] = [];
   // public lData: any[];
   constructor(private service : UserServiceService,private router : Router,private Http: HttpClient,private route: ActivatedRoute) { 
@@ -52,6 +53,10 @@ username : any ;
 
 
   ngOnInit(): void {
+
+    this.service.getAllCityLocation().subscribe((data: any)=>{
+      this.cityLocation=data;
+    })
     // this.cities = [{ name: 'London', id: 'UK01' }, { name: 'Sofia', id: 'BG01'}];
    // console.log(this.cityLocation);
     this.id=localStorage.getItem('id');
@@ -61,13 +66,12 @@ username : any ;
     this.email=localStorage.getItem('email');
     this.locationCity=localStorage.getItem('locationCity');
     this.phoneNumber=localStorage.getItem('phoneNumber');
-
      
 }
 
 
 
-
+  
 
 
 updateUser() {
