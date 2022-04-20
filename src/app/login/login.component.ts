@@ -42,7 +42,7 @@ invalidLogin = false;
         data => {
           this.router.navigate(['acceuil']);
         this.invalidLogin = false
-        console.log(data);
+       
     
         // const  = this.getLocation(data.locationId);
         // var locationObject ={id:locationUser.id, city:""};

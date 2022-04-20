@@ -74,11 +74,15 @@ authenticate(username: string, password: string): Observable<any> {
     // }
     isUserLoggedIn() {
       let user = localStorage.getItem('username')
-      console.log(!(user === null))
-      return !(user === null)
+if (user !== null) {
+  return true
+}else{
+  return false
+}
+       
       }
       logOut() {
-      localStorage.removeItem('username')
+        localStorage.clear();
       }
      
   }

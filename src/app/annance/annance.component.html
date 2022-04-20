@@ -7,6 +7,45 @@
             <h1 class="display-4 m-0"><span class="text-primary">Premium</span> Pet Services</h1>
         </div>
         <div class="row pb-3">
+            <div class="col-md-12 col-lg-12 mb-4">
+                <input [(ngModel)]="searchByCategorie"   >
+            </div>
+            <div class="col-md-12 col-lg-12 mb-4" *ngFor="let item of annancesAfterFilter">
+                <div class="p-3 w-100" style="max-width: 100%;height: max-content;background-color: #fff;box-shadow: 5px 10px 8px 10px #bbbbbb;" >
+                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                          <img class="w-100 mb-3" src="assets/img/bannier1.jpg" alt="Image">
+                           
+                          <h3 class="mb-3">{{item.category}}</h3>
+                          <p>{{item.description}}</p>
+                          <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                      </div>
+                </div>
+                <!-- <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                  
+                  
+                    </div>
+                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                        <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-prev-icon mb-n2"></span>
+                        </div>
+                    </a>
+                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                        <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-next-icon mb-n2"></span>
+                        </div>
+                    </a>
+                </div> -->
+            </div>
+               <!-- <div class="col-md-6 col-lg-4 mb-4">
+                <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                  <img class="w-100 mb-3" src="assets/img/bannier1.jpg" alt="Image">
+                    <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
+                    <h3 class="mb-3">Pet Boarding</h3>
+                    <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos, rebum sit vero stet ipsum justo</p>
+                    <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                </div>
+            </div>
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                   <img class="w-100 mb-3" src="assets/img/bannier1.jpg" alt="Image">
@@ -55,7 +94,7 @@
                     <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos, rebum sit vero stet ipsum justo</p>
                     <a class="text-uppercase font-weight-bold" href="">Read More</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

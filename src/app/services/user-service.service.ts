@@ -61,6 +61,22 @@ export class UserServiceService {
             );
     }
 
+    updateUser(item:any,locationCity:any) {
+      let params = new HttpParams();
+    params = params.append('locationCity', locationCity);
+      return <Observable<User>>this.Http
+      .put<User>(this.API_URL_USER  +'/update/' + item['id'],JSON.stringify(item),{
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        params: params,
+        responseType: "json"
+      }).pipe(
+        tap(() => {
+          this.refreshNedeed.next();
+        })
+      );
+      }
     createAnnance(item:any) {
       return <Observable<User>>this.Http
           .post<User>(this.API_URL_ANNANCE+ '/add',JSON.stringify(item),this.httpOptions)
@@ -73,14 +89,6 @@ export class UserServiceService {
 
 
 
-  updateUser(item:any) {
-    return <Observable<User>>this.Http
-    .put<User>(this.API_URL_USER  +'/update/' + item['id'],JSON.stringify(item),this.httpOptions).pipe(
-      tap(() => {
-        this.refreshNedeed.next();
-      })
-    );
-    }
 
     getLocation(id : any){
       return this.Http.get(this.API_URL_LOCATION + '/get/'+id);
@@ -89,4 +97,8 @@ export class UserServiceService {
    getAllCityLocation():Observable<any[]>{
       return this.Http.get<any>(this.API_URL_LOCATION + '/getAllCityLocation');
     }
+    getMyAnnances(id : any):Observable<any[]>{
+      return this.Http.get<any>(this.API_URL_ANNANCE + '/my/'+id);
+    }
+  
   }

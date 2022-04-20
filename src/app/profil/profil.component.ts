@@ -9,7 +9,7 @@ export class User {
   username!: string;
   email!: string;
   address!: string;
-  location : any ;
+  city!:any;
   password!: string;
   phoneNumber!: string;
   preferedCategory!: string;
@@ -27,25 +27,25 @@ export class Location {
 
 export class ProfilComponent implements OnInit {
   userLogin:User
-  userLocation:Location
+  // userLocation:Location
   user :any;
   location :any;
 username : any ;
  private id: any;
   email: any;
   address: any;
+
   locationCity : any;
-  city:any;
+ 
   password: any;
   phoneNumber: any;
   preferedCategory: any;
   userToUpdate : any ;
   cityLocation:any
-  public cities: { name: string, id: string }[] = [];
   // public lData: any[];
   constructor(private service : UserServiceService,private router : Router,private Http: HttpClient,private route: ActivatedRoute) { 
     this.userLogin = new User;
-    this.userLocation = new Location;
+    //this.userLocation = new Location;
 
     
   }
@@ -53,7 +53,6 @@ username : any ;
 
 
   ngOnInit(): void {
-
     this.service.getAllCityLocation().subscribe((data: any)=>{
       this.cityLocation=data;
     })
@@ -71,6 +70,8 @@ username : any ;
 
 
 
+
+
   
 
 
@@ -82,10 +83,10 @@ updateUser() {
   'address': this.address,
   'phoneNumber': this.phoneNumber,
   'preferedCategory': this.preferedCategory,
-  'locationCity': this.locationCity
+  // 'locationCity': this.locationCity
   }
  
-  this.service.updateUser(this.userToUpdate).subscribe(
+  this.service.updateUser(this.userToUpdate,this.userLogin.city).subscribe(
     data => {
     console.log(data);
     }
