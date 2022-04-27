@@ -13,6 +13,9 @@ import { RegistreComponent } from './registre/registre.component';
 import { LoginComponent } from './login/login.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AnnanceComponent } from './annance/annance.component';
+import { AllAnnanceComponent } from './all-annance/all-annance.component';
+import { AnnanceDetailsComponent } from './annance-details/annance-details.component';
+import { AddAnnanceComponent } from './add-annance/add-annance.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "app-header" },
@@ -27,8 +30,9 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'profil', component: ProfilComponent },
   { path: 'annances', component: AnnanceComponent},
-  
-
+  { path: 'allAnnances', component: AllAnnanceComponent},
+  { path: 'annanceDetails', component: AnnanceDetailsComponent},
+  { path: 'addAnnance', component: AddAnnanceComponent} ,
 ];
 
 @NgModule({

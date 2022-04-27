@@ -39,10 +39,7 @@ errorMessage = "Invalide username or password";
       "picture":this.annanceForm.picture,
       "userId":this.userService.user.id
     }
-    this.userService.createAnnance(this.annance).subscribe(response => {
-      console.log(response);
-    
-    });
+
       this.router.navigate(['/acceuil'])
 
   }

@@ -40,15 +40,21 @@ export class AnnanceComponent implements OnInit {
       console.warn('*---**',this.annances);
          })
    }
-
   }
+
+
+
+
+
   // filter(){
   //   console.warn("eeeeeeeeeee",this.searchByCategorie)
   //   this.annancesAfterFilter = this.annances.filter((_:any)=>{
   //     _.category.toLowerCase().includes(this.searchByCategorie.toLowerCase())
   //   })
+  //   }
 
   
-  //   }
+
+
 
 }

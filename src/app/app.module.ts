@@ -27,6 +27,9 @@ import { AnnanceComponent } from './annance/annance.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AllAnnanceComponent } from './all-annance/all-annance.component';
+import { AnnanceDetailsComponent } from './annance-details/annance-details.component';
+import { AddAnnanceComponent } from './add-annance/add-annance.component';
 
 // import { IgxComboModule } from "igniteui-angular";
 // import { ComboMainComponent } from "./combo-main/combo-main.component";
@@ -50,6 +53,10 @@ import { ToastrModule } from 'ngx-toastr';
     AnnanceComponent,
     HeaderComponent,
     FooterComponent,
+    AllAnnanceComponent,
+    AnnanceDetailsComponent,
+    AddAnnanceComponent,
+    
 
   ],
 

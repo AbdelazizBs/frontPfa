@@ -1,0 +1,48 @@
+<app-header-user></app-header-user>
+    <div class="mainscreen">
+        <!-- <img src="https://image.freepik.com/free-vector/purple-background-with-neon-frame_52683-34124.jpg"  class="bgimg " alt="">--> 
+          <div class="card">
+            <div class="leftside">
+              <img
+                src="https://i.pinimg.com/originals/18/9d/dc/189ddc1221d9c1c779dda4ad37a35fa1.png"
+                class="product"
+                alt="Shoes"
+              />
+            </div>
+            <div class="rightside">
+              <form action="" (ngSubmit)="createAnnance()">
+                <h1>CheckOut</h1>
+                <h2>Payment Information</h2>
+                <p>Description</p>
+                <input type="text" class="inputbox" name="description" [(ngModel)]="description"  />
+              
+              
+                <p>Catégorie</p>
+                <select class="inputbox" name="category" id="category"  [(ngModel)]="category"  >
+                  <option value="">--Selectionner une catégorie--</option>
+                  <option value="ELECTRICITE">ELECTRICITE</option>
+                </select>
+                <p>Location</p>
+                <select class="inputbox" name="locationCity" id="locationCity"  [(ngModel)]="locationCity"  >
+                  <option value="">--Selectionner une Location--</option>
+                  <option  *ngFor="let item of cityLocation"> {{item}} </option>
+                  
+                </select>
+                <p>upload file</p>
+                <input type="file" class="inputbox" name="name" [(ngModel)]="files"   />
+    <!-- <div class="expcvv">
+    
+                <p class="expcvv_text">Expiry</p>
+                <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
+    
+                <p class="expcvv_text2">CVV</p>
+                <input type="password" class="inputbox" name="cvv" id="cvv" required />
+            </div> -->
+                <p></p>
+                <button type="submit" class="button">Publier</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+        <app-footer></app-footer>

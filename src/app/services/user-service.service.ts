@@ -77,15 +77,58 @@ export class UserServiceService {
         })
       );
       }
-    createAnnance(item:any) {
-      return <Observable<User>>this.Http
-          .post<User>(this.API_URL_ANNANCE+ '/add',JSON.stringify(item),this.httpOptions)
-          .pipe(
-            tap(() => {
-              this.refreshNedeed.next();
-            })
-          );
-  }
+      createAnnance(locationCity:any,description:any,userId:string,category:string,files:File):Observable<any[]>{
+        let params = new HttpParams();
+        params = params.append('locationCity', locationCity);
+        let formData: FormData  = new FormData();
+        formData.append('description', description);
+        formData.append('userId', userId);
+        formData.append('category', category);
+        formData.append('files', files);
+     console.log(   formData.get('description') );
+     console.log(   formData.get('userId') );
+     console.log(   formData.get('category') );
+     console.log(typeof files );
+        return this.Http.post<any>("http://127.0.0.1:8080/annances/add",formData,{
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          }),
+          params: params,
+          responseType: "json"
+        }).pipe(
+          tap(() => {
+            this.refreshNedeed.next();
+          })
+        );
+      }
+  //   createAnnance(item:any) {
+  //     return <Observable<User>>this.Http
+  //         .post<User>(this.API_URL_ANNANCE+ '/add',JSON.stringify(item),this.httpOptions)
+  //         .pipe(
+  //           tap(() => {
+  //             this.refreshNedeed.next();
+  //           })
+  //         );
+  // }
+
+
+//   createAnnance(item:any, picture :any) {
+//     let params = new HttpParams();
+//     params = params.append('picture', picture);
+//     return <Observable<User>>this.Http
+//         .post<User>(this.API_URL_ANNANCE+ '/add',JSON.stringify(item){
+//           headers: new HttpHeaders({
+//             'Content-Type': 'application/json'
+//           }),
+//           params: params,
+//           responseType: "json"
+//         })
+//         .pipe(
+//           tap(() => {
+//             this.refreshNedeed.next();
+//           })
+//         );
+// }
 
 
 
@@ -100,5 +143,13 @@ export class UserServiceService {
     getMyAnnances(id : any):Observable<any[]>{
       return this.Http.get<any>(this.API_URL_ANNANCE + '/my/'+id);
     }
-  
+
+
+    getAllAnnances(id : any):Observable<any[]>{
+      return this.Http.get<any>(this.API_URL_ANNANCE + '/all/'+id);
+    }
+
+    // getAllCategory():Observable<any[]>{
+    //   return this.Http.get<any>(this.API_URL_ANNANCE + '/all/');
+    // }
   }
