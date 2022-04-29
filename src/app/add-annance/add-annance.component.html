@@ -4,15 +4,14 @@
           <div class="card">
             <div class="leftside">
               <img
-                src="https://i.pinimg.com/originals/18/9d/dc/189ddc1221d9c1c779dda4ad37a35fa1.png"
+                src="../../assets/img/télécharger.png"
                 class="product"
                 alt="Shoes"
               />
             </div>
             <div class="rightside">
-              <form action="" (ngSubmit)="createAnnance()">
-                <h1>CheckOut</h1>
-                <h2>Payment Information</h2>
+              <form action="" method="post" (ngSubmit)="createAnnance()" enctype="multipart/form-data">
+                <h1>Share Your Annonce  </h1>
                 <p>Description</p>
                 <input type="text" class="inputbox" name="description" [(ngModel)]="description"  />
               
@@ -29,7 +28,7 @@
                   
                 </select>
                 <p>upload file</p>
-                <input type="file" class="inputbox" name="name" [(ngModel)]="files"   />
+                <input type="file" class="inputbox" name="name" [(ngModel)]="files" multiple  />
     <!-- <div class="expcvv">
     
                 <p class="expcvv_text">Expiry</p>
