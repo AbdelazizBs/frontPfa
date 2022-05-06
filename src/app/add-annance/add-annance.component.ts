@@ -56,9 +56,21 @@ description:any
     console.warn('-*-*locationCity-*',this.locationCity )
     console.warn('-description*-*-*',this.description )
     console.warn('-*-category*-*',this.category )
+    let formData: FormData  = new FormData();
+    formData.append('description', this.description);
+    formData.append('userId', this.userId);
+    formData.append('category', this.category);
+    formData.append('files',new Blob([JSON.stringify({
+      files: 'files',
+    })], {
+    type: 'application/json'
+  }))
+ console.log(   formData.get('description') );
+ console.log(   formData.get('userId') );
+ console.log(   formData.get('category') );
+ console.log(typeof this.files );
    
-   
-  this.userService.createAnnance(this.locationCity,this.description,this.userId,this.category, this.files ).subscribe(response => {
+  this.userService.createAnnance(this.locationCity,formData ).subscribe(response => {
     console.log(response);
   });
     // this.router.navigate(['allAnnances'])

@@ -4,7 +4,14 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <input type="image" class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+<div class="profile-pic">
+  <label class="-label" for="file">
+    <span class="glyphicon glyphicon-camera"></span>
+    <span>Change Image</span>
+  </label>
+  <input id="file" type="file" name="files" [(ngModel)]="files" />
+  <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />
+</div>               
                 <span class="font-weight-bold">{{username}}</span>
                 <span class="text-black-50">{{email}}</span>
                 <span>
@@ -26,14 +33,16 @@
                     <!-- <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
                     <!-- <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
                     <div class="col-md-12"><label class="labels">Location</label>
-                        <select  [(ngModel)]="userLogin.city"  name="city" type="text" class="form-control" placeholder="enter address line 2" value="">
+                        <select  [(ngModel)]="userLogin.city"  name="city" type="text" class="form-control"  value="">
                         <option>--Select--</option>
                         <option [value]="city" class="input-options" *ngFor="let city of cityLocation">
                             {{city}}
                         </option>
                     </select></div>
+           
                     <!-- <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
-                    <div class="col-md-12"><label class="labels">Email ID</label><input [(ngModel)] = "email" name="email" type="text" class="form-control" placeholder="enter email id" value=""></div>
+                    <div class="col-md-12"><label class="labels">Email </label><input [(ngModel)] = "email" name="email" type="text" class="form-control" placeholder="enter email id" value=""></div>
+                    <div class="col-md-12"><label class="labels">Password</label><input [(ngModel)] = "password" name="passsword" type="password" class="form-control" placeholder="enter passsword" value=""></div>
                     <div class="col-md-12"><label class="labels">Category</label><input [(ngModel)] = "preferedCategory" name="preferedCategory" type="text" class="form-control" placeholder="education" value=""></div>
                 </form>
                 <!-- <div class="row mt-3">

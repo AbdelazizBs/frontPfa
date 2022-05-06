@@ -26,6 +26,7 @@ export class Location {
 })
 
 export class ProfilComponent implements OnInit {
+  files!: File;
   userLogin:User
   // userLocation:Location
   user :any;
@@ -76,17 +77,31 @@ username : any ;
 
 
 updateUser() {
-  this.userToUpdate = {
-    'id':localStorage.getItem('id') ,
-     'username': this.username,
-  'email': this.email,
-  'address': this.address,
-  'phoneNumber': this.phoneNumber,
-  'preferedCategory': this.preferedCategory,
-  // 'locationCity': this.locationCity
-  }
+  console.warn('-*-username*-*',this.username )
+  let formData: FormData  = new FormData();
+  this.id=localStorage.getItem('id');
+  formData.append('username', this.username);
+  formData.append('email', this.email);
+  formData.append('address', this.address);
+  formData.append('phoneNumber', this.phoneNumber);
+  formData.append('password', this.password);
+  formData.append('preferedCategory', this.preferedCategory);
+  formData.append('file',new Blob([JSON.stringify({
+    files: 'files',
+  })], {
+  type: 'application/json'
+}))
+  // this.userToUpdate = {
+  //   'id':localStorage.getItem('id') ,
+  //    'username': this.username,
+  // 'email': this.email,
+  // 'address': this.address,
+  // 'phoneNumber': this.phoneNumber,
+  // 'preferedCategory': this.preferedCategory,
+  // // 'locationCity': this.locationCity
+  // }
  
-  this.service.updateUser(this.userToUpdate,this.userLogin.city).subscribe(
+  this.service.updateUser(this.id,formData,this.userLogin.city).subscribe(
     data => {
     console.log(data);
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
-import { Observable, Subject, tap } from 'rxjs';
+import { Observable, Subject, Subscriber, tap } from 'rxjs';
 import { User } from '../login/login.component';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from './authentication.service';
@@ -34,6 +34,9 @@ export class UserServiceService {
     })
   }
 
+
+ 
+
   //cityLocation =  this.getCityLocation(localStorage.getItem('id'));
 
  
@@ -61,14 +64,11 @@ export class UserServiceService {
             );
     }
 
-    updateUser(item:any,locationCity:any) {
+    updateUser(id:any ,formData:any,locationCity:any) {
       let params = new HttpParams();
     params = params.append('locationCity', locationCity);
-      return <Observable<User>>this.Http
-      .put<User>(this.API_URL_USER  +'/update/' + item['id'],JSON.stringify(item),{
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        }),
+      return this.Http
+      .put<any>(this.API_URL_USER  +'/update/' + id,formData,{
         params: params,
         responseType: "json"
       }).pipe(
@@ -77,22 +77,12 @@ export class UserServiceService {
         })
       );
       }
-      createAnnance(locationCity:any,description:any,userId:string,category:string,files:File):Observable<any[]>{
+      createAnnance(locationCity:any,formData: any):Observable<any[]>{
         let params = new HttpParams();
         params = params.append('locationCity', locationCity);
-        let formData: FormData  = new FormData();
-        formData.append('description', description);
-        formData.append('userId', userId);
-        formData.append('category', category);
-        formData.append('files', files);
-     console.log(   formData.get('description') );
-     console.log(   formData.get('userId') );
-     console.log(   formData.get('category') );
-     console.log(typeof files );
+
         return this.Http.post<any>("http://127.0.0.1:8080/annances/add",formData,{
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-          }),
+   
           params: params,
           responseType: "json"
         }).pipe(
